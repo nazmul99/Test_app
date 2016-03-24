@@ -1,0 +1,27 @@
+<md-toolbar layout="row" class="md-primary" ng-show="true" >
+		<div class="md-toolbar-tools">
+			<md-button class="md-icon-button" aria-label="Menu" ng-click="toggleS()">
+				<md-icon md-font-set="material-icons"> menu </md-icon>
+      		</md-button>
+      		<h1 class="animated rubberBand"> My App</h1>
+      		<img ng-src="source/assets/logo.png" class="md-avatar" alt="My App" style='width:50px; height:50px;'>
+      		<span flex></span>
+      		<h1>Angular Material</h1>
+      		<span flex></span>
+      			<md-icon md-font-set="material-icons"> face </md-icon> &nbsp;&nbsp;&nbsp;
+      			<small>{{currentUser.userName}}</small>
+      		 	<md-menu>
+			      <md-button aria-label="Open" class="md-icon-button" ng-click="openMenu($mdOpenMenu, $event)">
+			        <md-icon md-font-set="material-icons"> more_vert </md-icon>
+			      </md-button>
+			      <md-menu-content width="4">
+					<md-menu-item>
+			          <md-button ng-href="#/Profile"><md-icon md-font-set="material-icons"  ng-class="{'md-warn':'true'}"> person </md-icon>Profile</md-button>
+			        </md-menu-item>
+			        <md-menu-item>
+			          <md-button ng-click="logout()"><md-icon md-font-set="material-icons" ng-class="{'md-warn':'true'}"> exit_to_app</md-icon>Logout</md-button>
+			        </md-menu-item>
+			      </md-menu-content>
+			    </md-menu>
+      	</div>
+</md-toolbar>

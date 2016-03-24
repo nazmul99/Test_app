@@ -1,0 +1,49 @@
+<html>
+<head>
+<title>My App</title>
+<link rel="stylesheet" href="source/lib/css/angular-material.min.css">
+<link rel="stylesheet" href="source/lib/css/material-icon.css">
+<link rel="stylesheet" href="source/lib/css/animate.min.css">
+<link rel="stylesheet" href="source/lib/css/myStyle.css">
+<link rel="shortcut icon" href="source/assets/logo.png" type="image/x-icon">
+<link rel="icon" href="assets/logo.png" type="image/x-icon">
+</head>
+<body ng-app="myApp" ng-cloak ng-controller="mainController">
+	<!-- Toolbar -->
+	 <header ng-if="isLogin" flex ng-include="'source/partials/toolbar.htm'"></header>
+	<!-- Toolbar-->
+    <div flex layout="row" layout-fill >
+
+        <!-- Container #3 -->
+        <ng-include ng-if="isLogin" src="'source/partials/sidenav.htm'" layout="vertical"></ng-include>
+        <!-- Container #3 -->
+
+        <!-- Container #4 -->
+        <div id="main_panel">
+        	<ng-view></ng-view>
+        </div>
+        <!-- Container #4 -->
+    </div>
+  <div id="loading_panel">
+     <md-progress-circular md-mode="indeterminate" ng-show="loading"></md-progress-circular>
+  </div>
+<!-- Angular Material requires Angular.js Libraries -->
+  <script src="source/lib/js/angular.min.js"></script>
+  <script src="source/lib/js/angular-route.js"></script>
+  <script src="source/lib/js/angular-animate.min.js"></script>
+  <script src="source/lib/js/angular-aria.min.js"></script>
+  <script src="source/lib/js/angular-messages.min.js"></script>
+
+  <!-- Angular Material Library -->
+  <script src="source/lib/js/angular-material.min.js"></script>
+  
+  <!-- My application bootstrap  -->
+	<script src="source/app/app.js"></script>
+	<script src="source/app/factory.js"></script>
+	<script src="source/app/service.js"></script>
+	<script src="source/app/controller/mainController.js"></script>
+  <script src="source/app/controller/authenticationController.js"></script>
+	<script src="source/app/controller/dashboardController.js"></script>
+
+</body>
+</html>

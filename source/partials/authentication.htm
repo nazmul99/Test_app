@@ -1,0 +1,109 @@
+<md-content flex class="authenticate_content" id="authentication_panel">
+    <div layout="row" layout-padding layout-wrap layout layout-align="start center" ng-cloak >
+  		<md-whiteframe class="md-whiteframe-24dp animated bounceInLeft"  flex="40" layout="column" layout-align="center center" style="background:#8BC34A" >
+    		<md-content class="md-no-momentum"  style="background:#8BC34A; width:100%">
+	    		<md-toolbar>
+				      <div class="md-toolbar-tools">
+				        <h2>Welcome</h2>
+				        <span flex></span>
+				        <md-input-container>
+				          <md-switch ng-model="login_register">{{login_register ? "Login" : "Register"}}</md-switch>
+				        </md-input-container>
+					  </div>
+				</md-toolbar>
+					<!-- Login Form-->
+					<form name="loginForm" ng-show="!login_register"  ng-submit="login(olduser)"  novalidate>
+						<md-input-container class="md-block">
+					      <md-icon md-font-set="material-icons">account_circle</md-icon>
+					      <input ng-model="olduser.username" name="username" type="text" placeholder="Username" ng-required="true">
+					      <div ng-messages="loginForm.username.$error" ng-show="loginForm.username.$error.required && loginForm.username.$dirty">
+				            <div ng-message="required">Userame is required.</div>
+				          </div>
+						 </md-input-container>
+					    <md-input-container class="md-block">
+					      <md-icon md-font-set="material-icons">vpn_key</md-icon>
+					      <input ng-model="olduser.password" name="password" type="password" placeholder="Password" ng-required="true" ng-minlength="6">
+					      <div ng-messages="loginForm.password.$error" ng-show="loginForm.password.$error.minlength">
+				            <div ng-message="minlength">Password must be atleast 6 character.</div>
+				          </div>
+					    </md-input-container>
+					    <md-input-container class="md-block">
+					    	<md-button class="md-raised md-primary" type="submit" ng-disabled="loginForm.$error.minlength|| loginForm.$error.required ">
+					    		<md-icon md-font-set="material-icons">fingerprint</md-icon>
+					    		Login
+					    	</md-button> 
+					    </md-input-container>
+					 </form>
+					 <!--Login Form-->
+					 
+					 <!-- Register Form-->
+					 <form name="registerForm" ng-show="login_register" novalidate>
+						<md-input-container class="md-block">
+					      <md-icon md-font-set="material-icons">person</md-icon>
+					      <input ng-model="newuser.name" name="name" type="text" placeholder="Name" ng-required="true">
+					      <div ng-messages="registerForm.name.$error" ng-show="registerForm.name.$error.required && registerForm.name.$dirty">
+				            <div ng-message="required">Name is required.</div>
+				          </div>
+						 </md-input-container>
+						 <md-input-container class="md-block">
+					      <md-icon md-font-set="material-icons">account_circle</md-icon>
+					      <input ng-model="newuser.username" name="username" type="text" placeholder="Username" ng-required="true">
+					      <div ng-messages="registerForm.username.$error" ng-show="registerForm.username.$error.required && registerForm.username.$dirty">
+				            <div ng-message="required">Userame is required.</div>
+				          </div>
+						 </md-input-container>
+					    <md-input-container class="md-block">
+					      <md-icon md-font-set="material-icons">vpn_key</md-icon>
+					      <input ng-model="newuser.password" name="password" type="password" placeholder="Password" ng-required="true" ng-minlength="6">
+					      <div ng-messages="registerForm.password.$error" ng-show="registerForm.password.$error.minlength">
+				            <div ng-message="minlength">Password must be atleast 6 character.</div>
+				          </div>
+					    </md-input-container>
+					    <md-input-container class="md-block">
+					      <md-icon md-font-set="material-icons">vpn_key</md-icon>
+					      <input ng-model="newuser.cpassword" name="cpassword" type="password" placeholder="Confirm Password" ng-required="true">
+					      <div ng-messages="registerForm.cpassword.$error" ng-show="newuser.password!=newuser.cpassword && registerForm.cpassword.$dirty">
+				            <div ng-message="newuser.password!=newuser.cpassword">Password hasn't match.</div>
+				          </div>
+					    </md-input-container>
+					    <md-input-container class="md-block">
+					    	<md-button class="md-raised md-primary" ng-disabled="registerForm.$error.minlength|| registerForm.$error.required || newuser.password!=newuser.cpassword">
+					    		<md-icon md-font-set="material-icons">touch_app</md-icon>
+					    		Register
+					    	</md-button>
+					    </md-input-container>
+					 </form> 
+					 <!--Register Form-->
+			</md-content>		
+		</md-whiteframe>
+			<span id="welcome_text"  flex-offset="20" flex="40" class="animated bounceInRight">
+				<span>
+				    <img ng-src="source/assets/logo.png" class="md-avatar" alt="My App" style='width:80px; height:80px;'>
+				    <h1 class="animated zoomIn">My App</h1>
+				</span>    
+				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+				 sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+				  Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
+				   nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in 
+				   reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+				    Excepteur sint occaecat cupidatat non proident, sunt in culpa qui
+				     officia deserunt mollit anim id est laborum.
+				     Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+				   reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+				    Excepteur sint occaecat cupidatat non proident, sunt in culpa qui
+				     officia deserunt mollit anim id est laborum.</p>
+				     <div ng-controller='TimeController' id="Time_viewer">
+					    <p>{{ clock  | date:'shortTime'}}</p>
+					    <h2><i>{{ clock  | date:'fullDate'}}</i></h2>
+					</div>
+			</span>
+			<span id="info_link" class="animated zoomIn">
+				<md-button class="md-fab md-primary" aria-label="info" ng-click="showMessage($event,'Lorem ipsum dolor sit amet, Lorem ipsum dolor sit amet,Function Lorem ipsum dolor sit amet')">
+					<img ng-src="source/assets/logo.png" class="md-avatar" alt="My App" style='width:30px; height:30px;'>
+					<md-tooltip md-direction="top">
+			          About
+			        </md-tooltip>
+      			</md-button> 
+			</span>
+	</div>
+</md-content>

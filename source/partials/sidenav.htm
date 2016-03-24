@@ -1,0 +1,34 @@
+<md-sidenav md-is-open="false" class="md-sidenav-left md-whiteframe-z4" md-component-id="left" flex >
+        	<md-toolbar layout="row" class="md-primary"  md-scroll-shrink>
+				<div class="md-toolbar-tools">
+					<md-icon md-font-set="material-icons">menu</md-icon>
+					<small>Menu</small>
+					<span flex></span>
+					<md-button class="md-icon-button" aria-label="Menu" ng-click="toggleS()">
+						<md-icon md-font-set="material-icons">close </md-icon>
+      				</md-button>
+				</div>
+			</md-toolbar>
+			<md-content flex ng-controller="sidenavController">
+        	<md-list ng-repeat="(group,sub) in sidebars"  ng-switch on="isGroupSelected(group)">
+        	<md-divider></md-divider>
+        	<md-subheader class="md-primary">
+        		<md-button ng-click="selectGroup(group)" ng-class="{'md-warn':!isGroupSelected(group), 'md-accent':isGroupSelected(group), 'md-raised':true}">
+        			<span style="float:left">Group: {{group}}</span>
+        			<span   style="float:right; padding-top:5px">
+        				<md-icon md-font-set="material-icons">
+        				{{isGroupSelected(group)?'keyboard_arrow_up':'keyboard_arrow_down'}}
+        				</md-icon>
+        			</span>
+        		</md-button>
+        	</md-subheader>
+        	<md-divider md-inset></md-divider>
+		        <md-list-item ng-repeat="s in sub"  ng-switch-when="true" style="padding:0; margin:0;">
+		            <md-button  ng-href="{{s.link}}" ng-click="selectLink(s.link)" ng-class="{'md-accent': s.link==selectedLink}">
+		            	<md-icon md-font-set="material-icons" ng-class="{'md-warn':'true'}"> format_list_bulleted</md-icon>
+		             	<span style="font-weight:bold;">{{s.name}}</span>
+		            </md-button>
+		        </md-list-item>
+		    </md-list>
+		    </md-content>
+</md-sidenav>
